@@ -65,7 +65,7 @@ public class Tauler {
         for (int i = 0; i < word.length; i++) {
             if(word[i]==introLetra.charAt(0) && introLetra.length()==1){
                 frase="Lletra correcta";
-                palabraEndevinada[i]=String.valueOf(introLetra.charAt(0));
+                this.palabraEndevinada[i]=String.valueOf(introLetra.charAt(0));
                 break;
             }
             else
@@ -87,7 +87,7 @@ public class Tauler {
         String introLetra = this.getLetra();
         String espacios = "";
         for (int i = 0; i < word.length; i++) {
-            if (word[i]==introLetra.charAt(0)){
+            if (word[i]==introLetra.charAt(0) && introLetra!=null){
                 espacios +=introLetra;
             } else if (word[i]==' ') {
                 espacios += " ";
@@ -113,7 +113,6 @@ public class Tauler {
         else if(vides<=1){
             verificacion= ("Et queda "+vides+" vida de "+totalVides);
         }
-
         return verificacion;
     }
 
