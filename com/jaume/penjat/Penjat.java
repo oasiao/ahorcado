@@ -1,7 +1,5 @@
 package com.jaume.penjat;
 
-import java.awt.*;
-
 public class Penjat {
 
     public static void main(String[] args) {
@@ -15,7 +13,7 @@ public class Penjat {
         }
         tauler.inicialitzarPartida(paraula, Integer.parseInt(intents));
         System.out.println(tauler.imprimir());
-        while (!tauler.hasGuanyat() && tauler.getIntents() > 0){
+        while (!tauler.hasGuanyat() && tauler.getVides() > 0){
             System.out.println(tauler.imprimirVides());
             String letra = Util.makeQuestion("Indica la lletra");
             System.out.println(tauler.verificar(letra));

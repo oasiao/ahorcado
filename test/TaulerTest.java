@@ -11,7 +11,7 @@ class TaulerTest {
     private Tauler tauler;
 
     @BeforeEach
-    void reiniciar(){
+    void reiniciar() {
         this.tauler = new Tauler();
         this.tauler.inicialitzarPartida("paraula", 4);
     }
@@ -23,24 +23,24 @@ class TaulerTest {
 
     @Test
     void inicialitzarPartidaNombreIntents() {
-        assertEquals(4, this.tauler.getIntents());
+        assertEquals(4, this.tauler.getVides());
     }
 
     @Test
     void verificarEntradaIncorrecte() {
-        assertEquals("Lletra incorrecta",this.tauler.verificar("ll"));
+        assertEquals("Lletra incorrecta", this.tauler.verificar("ll"));
     }
 
     @Test
     void verificarEntradaCorrecteEncertat() {
         this.tauler.verificar("a");
-        assertArrayEquals(new String[]{ null,"a",null,"a",null,null,"a" },this.tauler.getPalabraEndevinada());
+        assertArrayEquals(new String[]{null, "a", null, "a", null, null, "a"}, this.tauler.getPalabraEndevinada());
     }
 
     @Test
     void verificarEntradaCorrecteErrada() {
         this.tauler.verificar("n");
-        assertEquals(3,this.tauler.getIntents());
+        assertEquals(3, this.tauler.getVides());
     }
 
     @Test
@@ -65,7 +65,6 @@ class TaulerTest {
     }
 
 
-
     @Test
     void imprimirVidesPlural() {
         assertEquals("Et queden 4 vides de 4", this.tauler.imprimirVides());
@@ -82,7 +81,7 @@ class TaulerTest {
     @Test
     void restarIntents() {
         this.tauler.verificar("n");
-        assertEquals(3, this.tauler.getIntents());
+        assertEquals(3, this.tauler.getVides());
     }
 
     @Test
@@ -99,4 +98,5 @@ class TaulerTest {
     void hasGuanyatFalse() {
         assertFalse(this.tauler.hasGuanyat());
     }
+
 }
