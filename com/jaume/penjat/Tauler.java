@@ -47,9 +47,8 @@ public class Tauler {
         return introLetra;
     }
 
-    public String setLetra(String introLetra) {
+    public void setLetra(String introLetra) {
         this.introLetra = introLetra;
-        return introLetra;
     }
 
     //métodos
@@ -64,10 +63,11 @@ public class Tauler {
     public String verificar(String introLetra) {
         Integer vides = this.getVides();
         char[] word = this.getParaulaSecreta();
-        this.setLetra(introLetra);
+        setLetra(introLetra);
+        String letra = getLetra();
         String frase="";
         for (int i = 0; i < word.length; i++) {
-            if(word[i]==introLetra.charAt(0) && introLetra.length()==1){
+            if(word[i]==letra.charAt(0) && letra.length()==1){
                 frase="Lletra correcta";
                 String[] palabraEndevinada = new String[getParaulaSecreta().length];
                 palabraEndevinada[i] = String.valueOf(word[i]);//nos interesa pasar los valores coincidentes
