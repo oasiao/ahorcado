@@ -69,9 +69,9 @@ public class Tauler {
         for (int i = 0; i < word.length; i++) {
             if(word[i]==letra.charAt(0) && letra.length()==1){
                 frase="Lletra correcta";
-                String[] palabraEndevinada = new String[getParaulaSecreta().length];
+                String[] palabraEndevinada = new String[word.length];
                 palabraEndevinada[i] = String.valueOf(word[i]);//nos interesa pasar los valores coincidentes
-                this.setPalabraEndevinada(palabraEndevinada);
+                setPalabraEndevinada(palabraEndevinada);
                 //this.palabraEndevinada[i]=String.valueOf(introLetra.charAt(0));
             }
             else
@@ -123,12 +123,12 @@ public class Tauler {
 
     public String imprimirVides() {
         Integer vides=this.getVides();
-        String verificacion="";
+        String verificacion;
         Integer totalVides=this.getTotalIntents();
         if(vides>1){
-            verificacion= ("Et queden "+vides+" vides de "+totalVides );
+            verificacion = ("Et queden "+vides+" vides de "+totalVides );
         }
-        else if(vides<=1){
+        else {
             verificacion= ("Et queda "+vides+" vida de "+totalVides);
         }
         return verificacion;
