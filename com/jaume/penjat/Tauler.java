@@ -6,12 +6,26 @@ public class Tauler {
     private Integer totalNumIntents;
     private Integer vides;
     private String introLetra;
+    public String [] palabraEndevinada=new String[7];
 
-    public void setPalabraEndevinada(String[] palabraEndevinada) {
-        this.palabraEndevinada = palabraEndevinada;
+    public void setPalabraEndevinada(String[] palabraEndev) {
+        String[] s=getPalabraEndevinada();
+        //palabraEndevinada= new String[palabraEndev.length];
+        for (int i = 0; i < ParaulaSecreta.length; i++) {
+            if (s[i]==null)
+            {
+                s[i]=palabraEndev[i];
+            }
+        }
+        this.palabraEndevinada=s;
+
     }
 
-    private String[] palabraEndevinada;
+    public String [] getPalabraEndevinada()
+    {
+        return palabraEndevinada;
+    }
+
 
     //constructor
     public Tauler() {
@@ -32,6 +46,7 @@ public class Tauler {
     }
 
     public char[] getParaulaSecreta() {
+
         return ParaulaSecreta;
     }
 
@@ -43,9 +58,8 @@ public class Tauler {
         return introLetra;
     }
 
-    public String setLetra(String introLetra) {
+    public void setLetra(String introLetra) {
         this.introLetra = introLetra;
-        return introLetra;
     }
 
     //métodos
@@ -60,12 +74,18 @@ public class Tauler {
     public String verificar(String introLetra) {
         Integer vides = this.getVides();
         char[] word = this.getParaulaSecreta();
-        this.setLetra(introLetra);
+        setLetra(introLetra);
+        String letra = getLetra();
         String frase="";
+        String[] pal = new String[word.length];
         for (int i = 0; i < word.length; i++) {
-            if(word[i]==introLetra.charAt(0) && introLetra.length()==1){
+            if(word[i]==letra.charAt(0) && letra.length()==1){
+                pal[i]=letra;
+            }
+        }
+        for (int i = 0; i < pal.length; i++) {
+            if(pal[i]!=null){
                 frase="Lletra correcta";
-                this.palabraEndevinada[i]=String.valueOf(introLetra.charAt(0));
                 break;
             }
             else
@@ -78,46 +98,76 @@ public class Tauler {
             vides--;
             this.setVides(vides);
         }
-
+        setPalabraEndevinada(pal);
         return frase;
     }
 
-    public String imprimir() {
-        char[] word = this.getParaulaSecreta();
-        String introLetra = this.getLetra();
-        String espacios = "";
-        for (int i = 0; i < word.length; i++) {
-            if (word[i]==introLetra.charAt(0) && introLetra!=null){
-                espacios +=introLetra;
-            } else if (word[i]==' ') {
-                espacios += " ";
-            } else {
-                espacios += "_";
+    public String imprimir(){
+        char[] paraulaSec=getParaulaSecreta();
+        String [] palabra = getPalabraEndevinada();
+        String espacios ="";
+        if (palabra != null) {
+            for (int i = 0; i < paraulaSec.length; i++) {
+                if (palabra[i]!=null){
+                    espacios += String.valueOf(palabra[i]);
+                } else {
+                    espacios += "_";
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < paraulaSec.length; i++) {
+                    espacios += "_";
             }
         }
         return espacios;
     }
 
     public boolean hasGuanyat() {
-        return (String.valueOf(ParaulaSecreta).equals(String.join("",palabraEndevinada)));
+        /*String[] palabra = getPalabraEndevinada();
+        String toString = "";
+        for (int i = 0; i < this.ParaulaSecreta.length; i++) {
+            toString += palabra[i];
+        }
+        char[] toChar = toString.toCharArray();
+
+        if(toChar==this.ParaulaSecreta)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }*/
+        String[] palabra = getPalabraEndevinada();
+        String word = palabra.toString();
+        char[] secreta= getParaulaSecreta();
+        String secret=String.valueOf(secreta);
+
+        if(word==secret)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 
     public String imprimirVides() {
         Integer vides=this.getVides();
-        String verificacion="";
+        String verificacion;
         Integer totalVides=this.getTotalIntents();
         if(vides>1){
-            verificacion= ("Et queden "+vides+" vides de "+totalVides );
+            verificacion = ("Et queden "+vides+" vides de "+totalVides );
         }
-        else if(vides<=1){
+        else {
             verificacion= ("Et queda "+vides+" vida de "+totalVides);
         }
         return verificacion;
     }
 
-    public String[] getPalabraEndevinada()
-    {
-        return palabraEndevinada;
-    }
 }

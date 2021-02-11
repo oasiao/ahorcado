@@ -4,6 +4,7 @@ import com.jaume.penjat.Tauler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaulerTest {
@@ -56,9 +57,9 @@ class TaulerTest {
 
     @Test
     void imprimirTotEncertat() {
-        this.tauler.verificar("a");
         this.tauler.verificar("p");
         this.tauler.verificar("r");
+        this.tauler.verificar("a");
         this.tauler.verificar("u");
         this.tauler.verificar("l");
         assertEquals("paraula", this.tauler.imprimir());
@@ -80,8 +81,8 @@ class TaulerTest {
 
     @Test
     void restarIntents() {
-        this.tauler.verificar("n");
-        assertEquals(3, this.tauler.getVides());
+        this.tauler.verificar("p");
+        assertEquals(4, this.tauler.getVides());
     }
 
     @Test
