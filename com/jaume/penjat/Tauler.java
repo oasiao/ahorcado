@@ -6,11 +6,18 @@ public class Tauler {
     private Integer totalNumIntents;
     private Integer vides;
     private String introLetra;
-    private String [] palabraEndevinada;
+    private static String [] palabraEndevinada;
+    private String[] pal;
 
     public void setPalabraEndevinada(String[] palabraEndevinada) {
-        this.palabraEndevinada = palabraEndevinada;
+        pal=new String[palabraEndevinada.length];
+        for (int i=0;i<palabraEndevinada.length;i++)
+        {
+            pal[i]=palabraEndevinada[i];
+        }
+        this.palabraEndevinada=pal;
     }
+
     public String [] getPalabraEndevinada()
     {
         return palabraEndevinada;
@@ -66,13 +73,12 @@ public class Tauler {
         setLetra(introLetra);
         String letra = getLetra();
         String frase="";
+        String[] pal = new String[word.length];
         for (int i = 0; i < word.length; i++) {
             if(word[i]==letra.charAt(0) && letra.length()==1){
                 frase="Lletra correcta";
-                String[] palabraEndevinada = new String[word.length];
-                palabraEndevinada[i] = String.valueOf(word[i]);//nos interesa pasar los valores coincidentes
-                setPalabraEndevinada(palabraEndevinada);
-                //this.palabraEndevinada[i]=String.valueOf(introLetra.charAt(0));
+                pal[i]=letra;
+
             }
             else
             {
@@ -84,7 +90,7 @@ public class Tauler {
             vides--;
             this.setVides(vides);
         }
-
+        setPalabraEndevinada(pal);
         return frase;
     }
     public String imprimir(){
@@ -99,25 +105,21 @@ public class Tauler {
         }
         return espacios;
     }
-/*
-    public String imprimir() {
-        char[] word = this.getParaulaSecreta();
-        String introLetra = this.getLetra();
-        String espacios = "";
-        for (int i = 0; i < word.length; i++) {
-            if (word[i] == introLetra.charAt(0)){ //introLetra!=null === true
-                espacios += introLetra;
-            } else if (word[i]==' ') {
-                espacios += " ";
-            } else {
-                espacios += "_";
-            }
-        }
-        return espacios;
-    }*/
 
     public boolean hasGuanyat() {
-        return (String.valueOf(ParaulaSecreta).equals(String.join("",palabraEndevinada)));
+        String[] palabra = getPalabraEndevinada();
+        String toString = "";
+        for (int i = 0; i < palabra.length; i++) {
+            toString += palabra[i];
+        }
+        char[] toChar = toString.toCharArray();
+        if (toChar == getParaulaSecreta()) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
