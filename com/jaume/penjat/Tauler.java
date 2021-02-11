@@ -6,26 +6,23 @@ public class Tauler {
     private Integer totalNumIntents;
     private Integer vides;
     private String introLetra;
-    public String [] palabraEndevinada=new String[7];
+    public String[] palabraEndevinada=new String[7];
 
     public void setPalabraEndevinada(String[] palabraEndev) {
         String[] s=getPalabraEndevinada();
-        //palabraEndevinada= new String[palabraEndev.length];
-        for (int i = 0; i < ParaulaSecreta.length; i++) {
+        for (int i = 0; i < this.ParaulaSecreta.length; i++) {
             if (s[i]==null)
             {
                 s[i]=palabraEndev[i];
             }
         }
         this.palabraEndevinada=s;
-
     }
 
     public String [] getPalabraEndevinada()
     {
         return palabraEndevinada;
     }
-
 
     //constructor
     public Tauler() {
@@ -125,35 +122,22 @@ public class Tauler {
     }
 
     public boolean hasGuanyat() {
-        /*String[] palabra = getPalabraEndevinada();
+        char[] secretWord=getParaulaSecreta();
+        String[] palabra = getPalabraEndevinada();
         String toString = "";
-        for (int i = 0; i < this.ParaulaSecreta.length; i++) {
+        for (int i = 0; i < secretWord.length; i++) {
             toString += palabra[i];
         }
         char[] toChar = toString.toCharArray();
 
-        if(toChar==this.ParaulaSecreta)
+        if(secretWord==toChar)
         {
             return false;
         }
         else
         {
             return true;
-        }*/
-        String[] palabra = getPalabraEndevinada();
-        String word = palabra.toString();
-        char[] secreta= getParaulaSecreta();
-        String secret=String.valueOf(secreta);
-
-        if(word==secret)
-        {
-            return true;
         }
-        else
-        {
-            return false;
-        }
-
     }
 
 
