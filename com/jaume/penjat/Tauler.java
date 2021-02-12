@@ -6,7 +6,7 @@ public class Tauler {
     private Integer totalNumIntents;
     private Integer vides;
     private String introLetra;
-    public String[] palabraEndevinada=new String[7];
+    public String[] palabraEndevinada;
 
     public void setPalabraEndevinada(String[] palabraEndev) {
         String[] s=getPalabraEndevinada();
@@ -47,8 +47,10 @@ public class Tauler {
         return ParaulaSecreta;
     }
 
-    public void setParaulaSecreta(char[] ch) {
-        this.ParaulaSecreta = ch;
+    public void setParaulaSecreta(char[] palabra) {
+        this.ParaulaSecreta = palabra;
+        this.palabraEndevinada=new String[getParaulaSecreta().length];
+
     }
 
     public String getLetra() {
@@ -61,9 +63,9 @@ public class Tauler {
 
     //métodos
     public void inicialitzarPartida(String ParaulaSecreta, Integer NumIntents) {
-        char[] ch;
-        ch = ParaulaSecreta.toCharArray();
-        this.setParaulaSecreta(ch);
+        char[] palabra;
+        palabra = ParaulaSecreta.toCharArray();
+        this.setParaulaSecreta(palabra);
         this.setVides(NumIntents);
         this.setTotalIntents(NumIntents);
     }
