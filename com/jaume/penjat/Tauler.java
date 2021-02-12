@@ -120,26 +120,15 @@ public class Tauler {
         }
         return espacios;
     }
-
-    public boolean hasGuanyat() {
-        char[] secretWord=getParaulaSecreta();
-        String[] palabra = getPalabraEndevinada();
-        String toString = "";
-        for (int i = 0; i < secretWord.length; i++) {
-            toString += palabra[i];
+    public boolean hasGuanyat(){
+        boolean value = true;
+        for (int i = 0; i < getPalabraEndevinada().length; i++) {
+            if (getPalabraEndevinada()[i]==null){
+                value = false;
+            }
         }
-        char[] toChar = toString.toCharArray();
-
-        if(secretWord==toChar)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return value;
     }
-
 
     public String imprimirVides() {
         Integer vides=this.getVides();
